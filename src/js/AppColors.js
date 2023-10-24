@@ -20,3 +20,5 @@ const ColorsApp = {
     SecundaryAnime:'#D36853',
     SubcolorAnime:'#EAA262',
 }
+
+export default ColorsApp
