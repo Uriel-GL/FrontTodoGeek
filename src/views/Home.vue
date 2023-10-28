@@ -1,19 +1,5 @@
 <template>
-  <div>
-    <menuApp></menuApp>
     <div>
-     
+        <h1>Hola Mundo desde Home</h1>
     </div>
-  </div>
 </template>
-
-<script>
-import menuApp from "../components/menuApp.vue"; // Asegúrate de ajustar la ruta
-
-export default {
-  components: {
-    menuApp, // Registra el componente menuApp
-  },
-};
-</script>
-

@@ -1,7 +1,11 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHashHistory, createWebHistory } from "vue-router";
 
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
+import Register from '../views/Register.vue'
+import ForgotPassword from '../views/ForgotPass.vue'
+
+import NotFound from '../views/NotFound.vue'
 
 const routes = [
     {
@@ -11,11 +15,25 @@ const routes = [
     {
         path: '/login',
         component: Login
+    },
+    {
+        path: '/register',
+        component: Register
+    },
+    {
+        path: '/forgot-password',
+        component: ForgotPassword
+    },
+
+    //Cuando se ingrese una ruta que no este registrada lo llevara a la siguiente pagina
+    {
+        path: '/:catchAll(.*)',
+        component: NotFound
     }
 ]
 
 const router = createRouter({
-    history: createWebHashHistory(),
+    history: createWebHistory(),
     routes
 })
 
