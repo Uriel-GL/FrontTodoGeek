@@ -1,6 +1,6 @@
 <template>
-    <div class="bodyhome">
-        <h1>Hola Home</h1>
+    <div>
+        <h1>Hola Mundo desde Home</h1>
     </div>
 </template>
 
