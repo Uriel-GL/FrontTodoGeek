@@ -1,9 +1,11 @@
 import { createRouter, createWebHashHistory, createWebHistory } from "vue-router";
-
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import ForgotPassword from '../views/ForgotPass.vue'
+import Main from '../views/VistaPrincipal.vue'
+import Detalle from '../views/VistaDetalle.vue'
+import DetalleMultimedia from '../views/VistaDetalleMultimedia.vue'
 
 import NotFound from '../views/NotFound.vue'
 
@@ -25,7 +27,21 @@ const routes = [
         component: ForgotPassword
     },
 
-    //Cuando se ingrese una ruta que no este registrada lo llevara a la siguiente pagina
+    {
+        path: '/principal',
+        component: Main
+    },
+    {
+        path: '/detalle/:id?',
+        component: Detalle,
+        props: true, 
+      },
+      {
+        path: '/detalleMultimedia/:id?',
+        component: DetalleMultimedia,
+        props: true, 
+      },
+
     {
         path: '/:catchAll(.*)',
         component: NotFound
