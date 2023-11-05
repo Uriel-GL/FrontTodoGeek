@@ -244,12 +244,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .bodyRegister {
   padding: 16px;
   border-radius: 9px;
   display: flex;
   justify-content: center;
+  /*background-color: #212942;*/
+  background-color: #F0F2F5;
 }
 
 .formRegister {
