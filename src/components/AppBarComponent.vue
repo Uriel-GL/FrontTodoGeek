@@ -6,7 +6,7 @@
         height="46"
         alt=""
       />
-      <v-app-bar-title style="color: #f9f9f9">TodoGeek</v-app-bar-title>
+      <v-app-bar-title>TodoGeek</v-app-bar-title>
       <v-spacer></v-spacer>
       <v-btn id="btn_navbar">Iniciar Sesión</v-btn>
     </v-app-bar>
@@ -27,7 +27,7 @@ export default {
 <style>
 #nav {
   /*background-color: #2d3436 */
-  background: rgb(0, 0, 0);
+  /*background: rgba(0, 0, 0, 0.29);*/
 }
 
 #btn_navbar{

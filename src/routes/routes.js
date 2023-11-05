@@ -6,6 +6,7 @@ import ForgotPassword from '../views/ForgotPass.vue'
 import Main from '../views/VistaPrincipal.vue'
 import Detalle from '../views/VistaDetalle.vue'
 import DetalleMultimedia from '../views/VistaDetalleMultimedia.vue'
+import Pelis from '../views/VistaPelis.vue'
 
 import NotFound from '../views/NotFound.vue'
 
@@ -25,6 +26,10 @@ const routes = [
     {
         path: '/forgot-password',
         component: ForgotPassword
+    },
+    {
+        path: '/PelisView',
+        component: Pelis
     },
 
     {

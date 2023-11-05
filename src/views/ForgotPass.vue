@@ -79,7 +79,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .bodycard {
   padding: 20px;
 }
@@ -92,6 +92,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  background-image: url("./src/images/fondo_1.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 #btnRecuperar {
