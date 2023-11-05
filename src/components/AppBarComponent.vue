@@ -27,7 +27,7 @@ export default {
 <style>
 #nav {
   /*background-color: #2d3436 */
-  background: rgba(0, 0, 0, 0.29);
+  background: rgb(0, 0, 0);
 }
 
 #btn_navbar{

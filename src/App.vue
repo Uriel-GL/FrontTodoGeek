@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <AppBarComponent></AppBarComponent>
     <v-main>
       <v-conatiner fluid>
         <router-view />
