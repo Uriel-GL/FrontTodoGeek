@@ -1,8 +1,8 @@
 <template>
   <v-app>
-    <AppBarComponent></AppBarComponent>
     <v-main>
       <v-conatiner fluid>
+        <AppBarComponent></AppBarComponent>
         <router-view />
       </v-conatiner>
     </v-main>
@@ -21,8 +21,6 @@ export default {
 };
 </script>
 
-<style>
-:root {
- font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-}
+<style scoped>
+
 </style>

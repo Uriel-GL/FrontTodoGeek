@@ -1,8 +1,7 @@
 <template>
-  <div class="bodyLogin mx-auto mt-16" elevation="7" style="padding: 15px;">
+  <div class="bodyLogin mx-auto" elevation="7" style="padding: 15px">
     <v-row>
-
-      <v-col cols="12" md="6">
+      <v-col class="mt-6" cols="12" md="6">
         <div class="form_card">
           <v-card-text class="text-center">
             <h1 class="text-center mt-3">Bienvenido</h1>
@@ -14,7 +13,8 @@
                 name="Email"
                 prepend-inner-icon="mdi-email-outline"
                 type="text"
-                color="#f47521"
+                :color="colors.PrimaryAnime"
+                v-model="Auth.correo"
               />
               <v-text-field
                 variant="outlined"
@@ -22,10 +22,11 @@
                 name="Password"
                 prepend-inner-icon="mdi-lock-outline"
                 type="password"
-                color="#f47521"
+                :color="colors.PrimaryAnime"
+                v-model="Auth.password"
               />
             </v-form>
-            <a href="#">¿Olvidaste tu Contraseña?</a>
+            <a href="/forgot-password">¿Olvidaste tu Contraseña?</a>
             <br />
             <v-btn
               id="btn"
@@ -33,14 +34,15 @@
               class="mt-4"
               rounded="15"
               text="Ingresar"
-              color="#f47521"
+              :color="colors.PrimaryAnime"
               dark
+              @click="login"
             />
           </v-card-text>
         </div>
       </v-col>
 
-      <v-col class="text-center" cols="12" md="6">
+      <v-col class="info text-center mt-6" cols="12" md="6">
         <v-card-text class="mt-12">
           <h2>Descrube todo nuestro Contenido</h2>
           <h3 class="mt-4">Una Montaña de entretenimiento</h3>
@@ -53,8 +55,9 @@
             id="btn"
             variant="outlined"
             rounded="15"
-            color="#f47521"
+            :color="colors.PrimaryAnime"
             text="Registrarme"
+            @click="goToRegister"
           />
           <h4 class="mt-8">Peliculas, Series, Animes y mas.</h4>
         </v-card-text>
@@ -64,14 +67,49 @@
 </template>
 
 <script>
+import AuthService from "../Services/AuthService.js";
+import ColorsApp from "../js/AppColors";
 export default {
   data: () => ({
+    colors: ColorsApp,
+
+    Auth: {
+      correo: "",
+      password: "",
+    },
+
     visible: false,
   }),
+
+  methods: {
+    async login() {
+      try {
+        //Funcionamiento
+        var response = await AuthService.login(this.Auth)
+        
+        if(response.status == 200) {
+          var Id = response.data
+          console.log(Id)
+          this.$router.push('/')
+        }else{
+          alert("Las credenciales de usuario son incorrectas")
+        }
+
+      } catch (error) {
+        //En caso de error
+        console.log("Ocurrio un error inesperado\n" + error)
+      }
+    },
+
+    goToRegister(){
+      this.$router.push('/register')
+    },
+  },
 };
 </script>
 
-<style>
+<style scoped>
+
 a {
   font-family: "Roboto";
   color: #f47521;
@@ -82,10 +120,15 @@ a {
   width: 100%;
   height: 100%;
   padding: 15px;
-  /*background-image: url("./src/images/imagen_6.jpg");
+  background-color: #494949;
+  /*background-color: #212942;
+    box-shadow: 1px 1px 108.8px 19.2px rgb(25,31,53);
+  */
+  /*background-image: url("./src/images/fondo_3.jpeg");
   background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;*/
+  background-repeat: no-repeat;*/
+  
+  background-position: center center;
 }
 
 #card-login {
@@ -95,6 +138,18 @@ a {
   border-radius: 15px;
   text-align: center;
   padding: 15px;
+}
+
+.info h2 {
+  color: #f9f9f9;
+}
+
+.info h3 {
+  color: #f9f9f9;
+}
+
+.info h4 {
+  color: #f9f9f9;
 }
 
 #btnIngresar {
@@ -113,5 +168,4 @@ a {
   background-color: #ffffff;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
-
 </style>
