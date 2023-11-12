@@ -6,45 +6,37 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+	build: {
+		rollupOptions: {
+			output: {
+				manualChunks: {
+					'service-worker': ['sw.js']
+				}
+			}
+		}
+	},
 	plugins: [
 		vue(),
 		vuetify({ autoImport: true }),
-		VitePWA({
-			includeAssets: ['/icons/icon1.png'],
-			manifest: {
-				name: 'TodoGeek',
-				short_name: 'TodoGeek',
-				description: 'App de reseñas de peliculas, series, animes y Videojuegos.',
-				theme_color: '#ffffff',
-				icons: [
-					{
-						src: "/icons/icon1.png",
-						sizes: "512x512",
-						type: "image/png",
-						purpose: 'any'
-					}
-				]
-			},
-			workbox: {
-				//Configuracion del Cache al inciar la App
-				runtimeCaching: [{
-					urlPattern: ({ url }) => {
-						return url.pathname.startsWith('/api');
-					},
-					handler: "CacheFirst",
-					options: {
-						cacheName: "api-cache",
-						cacheableResponse: {
-							statuses: [0, 200]
-						}
-					}
-				}]
-			},
-			injectRegister: 'auto',
-			registerType: "autoUpdate",
-			devOptions: {
-				enabled: true
+		{
+			name: 'manifest-json',
+			writeBundle() {
+				this.emitFile({
+					type:'asset',
+					fileName:'manifest.json',
+					source: require('fs').readFileSync('manifest.json', 'utf-8')
+				});
 			}
-		})
+		},
+		{
+			name: 'service-worker',
+			writeBundle() {
+				this.emitFile({
+					type: 'asset',
+					fileName: 'sw.js',
+					source: require('fs').readFileSync('sw.js', 'utf-8')
+				})
+			}
+		}
 	],
 })
