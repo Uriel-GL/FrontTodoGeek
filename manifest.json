@@ -1,0 +1,16 @@
+{
+    "name": "TodoGeek",
+  "short_name": "TodoGeek",
+  "description": "App de reseñas de peliculas, series, animes y Videojuegos.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "public/icons/LOGO.png",
+      "sizes": "300x300",
+      "type": "image/png"
+    }
+  ]
+}
