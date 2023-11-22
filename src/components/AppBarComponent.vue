@@ -1,4 +1,5 @@
 <template>
+  <div>
     <v-app-bar id="nav" elevation="2">
       <img
         src="https://firebasestorage.googleapis.com/v0/b/tiendaservicios-b7281.appspot.com/o/Imagenes%2FLOGO.png?alt=media&token=11c0c69a-5b47-4ac6-b1f3-acd299492adb&_gl=1*1hz4lps*_ga*NzIwMjY2NTg1LjE2ODg2NjQ4MDA.*_ga_CW55HF8NVT*MTY5NzE3NTI1Ny4yNi4xLjE2OTcxNzY3NTIuMi4wLjA."
@@ -10,18 +11,19 @@
       <v-spacer></v-spacer>
       <v-btn id="btn_navbar">Iniciar Sesión</v-btn>
     </v-app-bar>
+  </div>
 </template>
 
 <script>
 export default {
-    name: "AppBarComponent",
+  name: "AppBarComponent",
 
   components: {},
 
   data: () => ({
     //
   }),
-}
+};
 </script>
 
 <style>
@@ -30,9 +32,9 @@ export default {
   /*background: rgba(0, 0, 0, 0.29);*/
 }
 
-#btn_navbar{
+#btn_navbar {
   border-radius: 9px;
-  color: #F9F9F9;
+  color: #f9f9f9;
   font-size: 11px;
   background-color: #f47521;
 }
