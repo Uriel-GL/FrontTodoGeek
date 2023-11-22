@@ -1,29 +1,59 @@
 <template>
-    <div>
-        <v-card v-for="serie in series" :key="serie.Id">
-            <v-card-title>{{ serie.Title }}</v-card-title>
-            <v-card-subtitle>{{ serie.Descripcion }}</v-card-subtitle>
-            <v-card-item>{{ serie.Episodios }}</v-card-item>
-            <v-img>{{ serie.Imagen }}</v-img>
-        </v-card>
+    <div class="bodyAnimes">
+
+        <v-row class="mt-4">
+            <v-col v-for="anime in animes" :key="anime.id" cols="6" xxl="3" xl="3" lg="3" md="3" sm="3" xs="6">
+                <CardComponent :data="anime"></CardComponent>
+            </v-col>
+        </v-row>
+    </div>
+    <div v-if="isLoading">
+        <v-row>
+            <v-col v-for="n in 4" :key="n" cols="6" xxl="3" xl="3" lg="3" md="3" sm="3" xs="6">
+                <v-skeleton-loader
+                    class="mx-auto border"
+                    max-width="240"
+                    max-height="370"
+                    type="card-avatar, actions"
+                ></v-skeleton-loader>
+            </v-col>
+        </v-row>
     </div>
 </template>
 <script>
-import axios from 'axios';
+import ColorsApp from '../js/AppColors';
+import { VSkeletonLoader } from 'vuetify/lib/labs/components.mjs';
+import CardComponent  from '../components/CardSComponent.vue'
+import axios from "axios";  
 export default {
     data(){
         return{
-            series: []
+            colors: ColorsApp,
+            isLoading: false,
+            animes: []
         }
     },
+    components: {
+        VSkeletonLoader,
+        CardComponent
+    },
     mounted(){
-        axios.get('')
+        axios.get('https://localhost:7121/api/Pelis/Resena/Serie')
         .then(response => {
-            this.series = response.data;
+            this.animes = response.data;
         })
         .catch(error => {
             console.error('No se pudieron cargar los datos:', error)
         });
+    },
+    methods: {
+        
     }
 }
 </script>
+
+<style scoped>
+.bodyAnime {
+  padding: 15px;
+}
+</style>

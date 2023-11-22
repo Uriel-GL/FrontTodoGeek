@@ -1,5 +1,4 @@
 <template>
-    <menu-app></menu-app>
     <div class="cards-container">
         <v-row class="d-flex justify-center align-center">
             <v-col cols="12" sm="6" md="3" lg="3" xl="3">
@@ -58,11 +57,9 @@
 </template>
   
 <script>
-import menu from "../components/AppBarComponent.vue";
 
 export default {
     components: {
-        "menu-app": menu,
     },
 };
 </script>
