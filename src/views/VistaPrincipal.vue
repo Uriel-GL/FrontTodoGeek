@@ -78,6 +78,7 @@ export default {
 };
 </script>
   
+
 <style scoped>
 .cards-container {
     background-image: linear-gradient(45deg, #3867D6, #5733FF, #F47521, #7213CB);
