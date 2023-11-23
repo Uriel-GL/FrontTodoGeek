@@ -105,9 +105,9 @@ section::before {
   width: 100%;
   height: 100%;
   background: linear-gradient(#000,#0f0,#000);
-  /*animation: animate 5s linear infinite;*/
+  animation: animate 5s linear infinite;
 }
-/*@keyframes animate 
+@keyframes animate 
 {
   0%
   {
@@ -117,7 +117,7 @@ section::before {
   {
     transform: translateY(100%);
   }
-}*/
+}
 
 section span {
   position: relative;
@@ -130,8 +130,8 @@ section span {
 }
 
 section span:hover {
-  /*background: #0f0;
-  transition: 0s;*/
+  background: #0f0;
+  transition: 0s;
 }
 
 section .bodyNotFound {
