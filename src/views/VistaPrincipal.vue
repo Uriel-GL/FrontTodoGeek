@@ -7,7 +7,7 @@
                         <v-img class="image" src="/src/assets/Movie.png" alt="Película"></v-img>
                     </v-card>
                     <div>
-                        <v-btn prepend-icon="$vuetify" append-icon="$vuetify" class="geek-button">
+                        <v-btn prepend-icon="$vuetify" append-icon="$vuetify" class="geek-button" @click="verMovies()">
                             Movies
                         </v-btn>
                     </div>
@@ -15,7 +15,7 @@
             </v-col>
             <v-col cols="12" sm="6" md="3" lg="3" xl="3">
                 <v-card class="custom-card">
-                    <v-btn prepend-icon="$vuetify" append-icon="$vuetify" class="geek-button">
+                    <v-btn prepend-icon="$vuetify" append-icon="$vuetify" class="geek-button" @click="verSeries()">
                             Series
                         </v-btn>
                     <v-card class="poster-image">
@@ -30,7 +30,7 @@
                         <v-img class="image" src="/src/assets/Anime.png" alt="Anime"></v-img>
                     </v-card>
                     <div>
-                        <v-btn prepend-icon="$vuetify" append-icon="$vuetify" class="geek-button">
+                        <v-btn prepend-icon="$vuetify" append-icon="$vuetify" class="geek-button" @click="verAnimes()">
                             Anime
                         </v-btn>
                     </div>
@@ -38,7 +38,7 @@
             </v-col>
             <v-col cols="12" sm="6" md="3" lg="3" xl="3">
                 <v-card class="custom-card">
-                    <v-btn prepend-icon="$vuetify" append-icon="$vuetify" class="geek-button">
+                    <v-btn prepend-icon="$vuetify" append-icon="$vuetify" class="geek-button" @click="verGames()">
                            Games
                         </v-btn>
                     <v-card class="poster-image">
@@ -61,9 +61,24 @@
 export default {
     components: {
     },
+    methods: {
+        verMovies(){
+            this.$router.push("/PelisView")
+        },
+        verSeries(){
+            this.$router.push("/SeriesView")
+        },
+        verAnimes(){
+            this.$router.push("/AnimesView")
+        },
+        verGames(){
+            this.$router.push("/GamesView")
+        }
+    }
 };
 </script>
   
+
 <style scoped>
 .cards-container {
     background-image: linear-gradient(45deg, #3867D6, #5733FF, #F47521, #7213CB);
