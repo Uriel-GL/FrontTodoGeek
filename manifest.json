@@ -12,5 +12,8 @@
       "sizes": "300x300",
       "type": "image/png"
     }
-  ]
+  ],
+  "permissions": {
+    "camera": "Se necesita acceso a la cámara para funciones de fotografía y video."
+  }
 }

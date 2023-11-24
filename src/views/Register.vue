@@ -167,6 +167,21 @@
       </div>
     </v-card>
   </div>
+  <video ref="video" autoplay></video>
+  <v-btn
+    class="btnRegistro mt-4"
+    text="Abrir cámara"
+    variant="text"
+    :color="colors.PrimaryAnime"
+    @click="startCamera"
+  />
+  <v-btn
+    class="btnRegistro mt-4"
+    text="Cerrar cámara"
+    variant="text"
+    :color="colors.PrimaryAnime"
+    @click="stopCamera"
+  />
 </template>
 
 <script>
@@ -178,10 +193,11 @@ export default {
     isRegister: false,
     isDisabled: false,
     colors: ColorsApp,
+    mediaStream: null,
     UsuarioDto: {
       auth: {
         correo: "",
-        Password: ""
+        Password: "",
       },
 
       personas: {
@@ -212,31 +228,49 @@ export default {
       Contrasenia: (value) => !!value || "La contraseña es obligatoria",
     },
   }),
-//Dmx6W34FMzSuwuaLSaAws62eROt2
+  //Dmx6W34FMzSuwuaLSaAws62eROt2
   methods: {
     async registerUser() {
       try {
-          this.isRegister = true;
-          this.isDisabled = true;
-          var response = await AuthService.register(this.UsuarioDto)
-          console.log(response)
+        this.isRegister = true;
+        this.isDisabled = true;
+        var response = await AuthService.register(this.UsuarioDto);
+        console.log(response);
 
-          setTimeout(() => {
-            this.isRegister = false;
-            this.isDisabled = false;
-          }, "5000");
+        setTimeout(() => {
+          this.isRegister = false;
+          this.isDisabled = false;
+        }, "5000");
 
-          if(response.status == 200){
-            alert('Registro realizado con exito')
-          }else{
-            alert("Ocurrio un error intenta mas tarde.")
-          }
-        
+        if (response.status == 200) {
+          alert("Registro realizado con exito");
+        } else {
+          alert("Ocurrio un error intenta mas tarde.");
+        }
       } catch (error) {
         console.log("Ocurrio un error inesperado\n" + error);
       }
     },
+    async startCamera() {
+      const videoElement = this.$refs.video;
 
+      try {
+        this.mediaStream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+        });
+        videoElement.srcObject = this.mediaStream;
+      } catch (error) {
+        console.error("Error al acceder a la cámara:", error);
+      }
+    },
+    stopCamera() {
+      // Detén la cámara liberando el recurso del MediaStream
+      if (this.mediaStream) {
+        const tracks = this.mediaStream.getTracks();
+        tracks.forEach((track) => track.stop());
+        this.mediaStream = null;
+      }
+    },
     cancelar() {
       this.$router.push("/login");
     },
@@ -251,7 +285,7 @@ export default {
   display: flex;
   justify-content: center;
   /*background-color: #212942;*/
-  background-color: #F0F2F5;
+  background-color: #f0f2f5;
 }
 
 .formRegister {
