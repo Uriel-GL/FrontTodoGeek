@@ -9,13 +9,14 @@ import DetalleMultimedia from '../views/VistaDetalleMultimedia.vue'
 import Pelis from '../views/VistaPelis.vue'
 import Animes from '../views/Animes.vue'
 import Series from '../views/Series.vue'
+import Games from '../views/JuegosView.vue'
 
 import NotFound from '../views/NotFound.vue'
 
 const routes = [
     {
         path: '/',
-        component: Main
+        component: Login
     },
     {
         path: '/login',
@@ -36,6 +37,10 @@ const routes = [
     {
         path: '/SeriesView',
         component: Series
+    },
+    {
+        path: '/GamesView',
+        component: Games
     },
     {
         path: '/PelisView',

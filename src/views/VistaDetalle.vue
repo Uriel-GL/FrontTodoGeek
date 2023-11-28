@@ -1,5 +1,5 @@
 <template>
-    <menu-app></menu-app>
+
     <div class="cards-container">
         <v-row class="d-flex justify-center align-center">
             <v-col cols="12" sm="12" md="6" lg="6" xl="6">

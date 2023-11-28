@@ -40,7 +40,8 @@
       },
       methods: {
         verDetalles(Id){
-            this.$router.push(`/detalleMultimedia/${Id}`)
+          console.log('JUEGOS')
+            this.$router.push(`/detalle/${Id}`)
         }
       },
   };
