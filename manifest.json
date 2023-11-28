@@ -1,5 +1,5 @@
 {
-    "name": "TodoGeek",
+  "name": "TodoGeek",
   "short_name": "TodoGeek",
   "description": "App de reseñas de peliculas, series, animes y Videojuegos.",
   "start_url": "/",
