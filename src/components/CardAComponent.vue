@@ -1,5 +1,5 @@
 <template>
-    <v-card class="cardAnime mx-auto" max-width="240" height="400" elevation="2">
+    <v-card class="cardAnime mx-auto" max-width="240" height="470" elevation="2">
       <v-img
         class="align-end text-white"
         height="280px"
@@ -20,8 +20,14 @@
             </v-chip>
           </v-col>
         </v-row>
-        <h4 class="mt-3">{{ data.nombre }}</h4>
-        <v-btn block="" color="orange" @click="verDetalles(data.id)">Detalle</v-btn>
+        <br>
+        <v-row>
+          <v-col>
+            <h4 class="mt-3">{{ data.nombre }}</h4>
+            <v-btn block="" color="orange" @click="goTodetalle(data.id)">Detalle</v-btn>
+
+          </v-col>
+        </v-row>
       </div>
     </v-card>
   </template>
@@ -40,7 +46,10 @@
       },
       methods: {
         verDetalles(Id){
-            this.$router.push({name: 'VistaDetalle', params: {id: Id}})
+          this.$router.push(`/detalleMultimedia/${Id}`)
+        },
+        goTodetalle(id){
+          this.$router.push(`/detalleMultimedia/${id}`)
         }
       },
   };
@@ -49,8 +58,9 @@
   <style scoped>
   
   .cardAnime {
-    padding: 0;
+    padding: 20px;
     margin: 0;
+
   }
   
   .bodyCardAnime {
