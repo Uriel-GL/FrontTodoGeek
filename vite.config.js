@@ -1,42 +1,53 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import vuetify from 'vite-plugin-vuetify';
+import { VitePWA } from 'vite-plugin-pwa';
 
-import vuetify from 'vite-plugin-vuetify'
-import { VitePWA } from 'vite-plugin-pwa'
+import fs from 'fs';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-	build: {
-		rollupOptions: {
-			output: {
-				manualChunks: {
-					'service-worker': ['sw.js']
-				}
-			}
-		}
-	},
-	plugins: [
-		vue(),
-		vuetify({ autoImport: true }),
-		{
-			name: 'manifest-json',
-			writeBundle() {
-				this.emitFile({
-					type:'asset',
-					fileName:'manifest.json',
-					source: require('fs').readFileSync('manifest.json', 'utf-8')
-				});
-			}
-		},
-		{
-			name: 'service-worker',
-			writeBundle() {
-				this.emitFile({
-					type: 'asset',
-					fileName: 'sw.js',
-					source: require('fs').readFileSync('sw.js', 'utf-8')
-				})
-			}
-		}
-	],
-})
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'service-worker': ['sw.js'],
+        },
+      },
+    },
+  },
+  plugins: [
+    vue(),
+    vuetify({ autoImport: true }),
+    {
+      name: 'manifest-json',
+      writeBundle() {
+        // Definir la función loadFileContent dentro de writeBundle
+        function loadFileContent(filePath) {
+          return fs.readFileSync(filePath, 'utf-8');
+        }
+
+        this.emitFile({
+          type: 'asset',
+          fileName: 'manifest.json',
+          source: loadFileContent('manifest.json'),
+        });
+      },
+    },
+    {
+      name: 'service-worker',
+      writeBundle() {
+        // Definir la función loadFileContent dentro de writeBundle
+        function loadFileContent(filePath) {
+          return fs.readFileSync(filePath, 'utf-8');
+        }
+
+        this.emitFile({
+          type: 'asset',
+          fileName: 'sw.js',
+          source: loadFileContent('sw.js'),
+        });
+      },
+    },
+    VitePWA(),
+  ],
+});
