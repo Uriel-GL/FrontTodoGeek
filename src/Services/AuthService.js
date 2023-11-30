@@ -24,7 +24,7 @@ export default {
     },
 
     forgotPassword(correo){
-        return apiClient.post(`/Auth/forgot-password/${correo}`)
+        return apiClient.post(`/Auth/forgot-password/?email=${correo}`)
     },
 
     suspenderUser(){
