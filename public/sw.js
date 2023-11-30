@@ -44,7 +44,7 @@ self.addEventListener('fetch', (event) => {
     }
 
     // Para contenido dinámico de la API
-    else if (event.request.url.startsWith('https://localhost:7121/api')) {
+    else if (event.request.url.startsWith('https://www.resenageek.somee.com/api')) {
         event.respondWith(
             caches.open('apiCache').then((cache) => {
                 return cache.match(event.request).then((response) => {
