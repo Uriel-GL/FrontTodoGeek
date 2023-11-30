@@ -1,3 +1,3 @@
 export const enviorment = {
-    apiUrl: 'https://localhost:7121/api'
+    apiUrl: 'https://www.resenageek.somee.com/api'
 };
