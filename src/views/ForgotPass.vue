@@ -65,7 +65,16 @@ export default {
       try {
         this.isLoading = true;
         this.isDisabled = true;
-        var response = await AuthService.forgotPassword();
+        const response = await AuthService.forgotPassword(this.correo);
+        
+        setTimeout(() => {
+          if(response.status == 200 || response.status == 201){
+            this.isLoading = false;
+            this.isDisabled = false;
+            alert("Revisa tu bandeja de spam o correo para que puedas recuperar.");
+          }
+        }, 3000);
+
         console.log(response.status);
       } catch (error) {
         console.log("Ocurrio un error inesperado\n" + error);

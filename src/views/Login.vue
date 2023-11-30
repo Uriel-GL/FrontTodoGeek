@@ -90,6 +90,7 @@ export default {
         if(response.status == 200) {
           var Id = response.data
           console.log(Id)
+          localStorage.setItem('token', Id);
           this.$router.push('/principal')
         }else{
           alert("Las credenciales de usuario son incorrectas")

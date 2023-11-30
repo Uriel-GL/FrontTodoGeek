@@ -1,10 +1,11 @@
 //Service para consultar a la API sobre el incio de sesion y mas de la App 
 
 import axios from "axios";
+import { enviorment } from '../Services/envirorment'
 
 //Cliente principal 
 const apiClient = axios.create({
-    baseURL: 'https://localhost:7121/api',
+    baseURL: enviorment.apiUrl,
     withCredentials: false,
     headers: {
         Accept: 'application/json',
@@ -23,7 +24,7 @@ export default {
     },
 
     forgotPassword(correo){
-        return apiClient.post('/Auth/forgot-password', correo)
+        return apiClient.post(`/Auth/forgot-password/${correo}`)
     },
 
     suspenderUser(){
