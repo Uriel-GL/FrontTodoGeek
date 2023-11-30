@@ -6,6 +6,9 @@ import { VitePWA } from 'vite-plugin-pwa';
 import fs from 'fs';
 
 export default defineConfig({
+  server: {
+    host: true
+  },
   build: {
     rollupOptions: {
       output: {
