@@ -5,10 +5,10 @@ self.addEventListener('install', (event) => {
         .then((cache) => {
             return cache.addAll([
                 '/',
-                'index.html',
-                'src/main.js',
-                'public/icons/LOGO.png',
-                'src/App.vue'
+                './index.html',
+                './src/main.js',
+                './public/icons/LOGO.png',
+                './src/App.vue'
             ]);
         })
     );
