@@ -25,6 +25,7 @@ import ColorsApp from '../js/AppColors';
 import { VSkeletonLoader } from 'vuetify/lib/labs/components.mjs';
 import CardComponent  from '../components/CardVComponent.vue'
 import axios from "axios";  
+import { enviorment } from '../Services/envirorment'
 export default {
     data(){
         return{
@@ -38,7 +39,7 @@ export default {
         CardComponent
     },
     mounted(){
-        axios.get('https://localhost:7121/api/Game/Resena')
+        axios.get(enviorment.apiUrl + '/Game/Resena')
         .then(response => {
             this.animes = response.data;
         })

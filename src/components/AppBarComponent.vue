@@ -9,7 +9,8 @@
       />
       <v-app-bar-title>TodoGeek</v-app-bar-title>
       <v-spacer></v-spacer>
-      <v-btn id="btn_navbar">Iniciar Sesión</v-btn>
+      <v-btn id="btn_navbar" @click="goToLogin">Iniciar Sesión</v-btn>
+      <v-btn @click="goToLogin" variant="text">Salir</v-btn>
     </v-app-bar>
   </div>
 </template>
@@ -23,6 +24,12 @@ export default {
   data: () => ({
     //
   }),
+
+  methods: {
+    goToLogin(){
+      this.$router.push('/login')
+    }
+  }
 };
 </script>
 

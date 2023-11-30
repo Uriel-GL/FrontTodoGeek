@@ -10,7 +10,8 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'service-worker': ['sw.js'],
+          'service-worker': ['/public/sw.js'],
+          'manifest-json': ['manifest.json']
         },
       },
     },
@@ -44,10 +45,16 @@ export default defineConfig({
         this.emitFile({
           type: 'asset',
           fileName: 'sw.js',
-          source: loadFileContent('sw.js'),
+          source: loadFileContent('public/sw.js'),
         });
       },
     },
-    VitePWA(),
+    VitePWA({
+      manifest: {
+        fileName: 'manifest.json',
+      },
+      scope: '/',
+      injectRegister: false
+    }),
   ],
 });

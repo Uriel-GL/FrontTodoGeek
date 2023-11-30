@@ -96,6 +96,7 @@
 <script>
 import axios from 'axios';
 import menu from "../components/AppBarComponent.vue";
+import { enviorment } from '../Services/envirorment'
 
 export default {
     data() {
@@ -118,7 +119,7 @@ export default {
 
     methods: {
         getSuggestedGames() {
-            axios.get(`https://localhost:7121/api/Pelis/Resena/${this.game.tipo}`)
+            axios.get(enviorment.apiUrl + `/Pelis/Resena/${this.game.tipo}`)
                 .then(response => {
                     console.log(this.game.tipo)
                     console.log(response.data);
@@ -133,7 +134,7 @@ export default {
         loadGameInfo() {
 
 
-            axios.get(`https://localhost:7121/api/Pelis/${this.$route.params.id}`)
+            axios.get(enviorment.apiUrl + `/Pelis/${this.$route.params.id}`)
                 .then((response) => {
                     this.game = response.data;
                 })

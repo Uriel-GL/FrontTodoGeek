@@ -35,6 +35,7 @@ import ColorsApp from '../js/AppColors';
 import { VSkeletonLoader } from 'vuetify/lib/labs/components.mjs';
 import CardComponent  from '../components/CardComponent.vue'
 import axios from "axios";
+import { enviorment } from '../Services/envirorment'
 
 export default {
     
@@ -64,7 +65,7 @@ export default {
     },
     
     mounted(){
-        axios.get('https://localhost:7121/api/Pelis/Resena/Película')
+        axios.get(enviorment.apiUrl + '/Pelis/Resena/Película')
         .then(response => {
             this.animes = response.data;
         })

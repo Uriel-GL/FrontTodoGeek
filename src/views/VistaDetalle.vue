@@ -98,6 +98,7 @@ import axios from 'axios';
 import menu from "../components/AppBarComponent.vue";
 import GameFeature from '../components/GameFeature.vue'; // Importa el componente
 import Platform from '../components/Platform.vue'; // Importa el componente
+import { enviorment } from '../Services/envirorment'
 
 export default {
     data() {
@@ -127,7 +128,7 @@ export default {
     methods: {
         getSuggestedGames() {
             axios
-                .get('https://localhost:7121/api/Game/Resena')
+                .get(enviorment.apiUrl + 'Game/Resena')
                 .then(response => {
                     this.suggestedGames = response.data;
                 })
@@ -138,7 +139,7 @@ export default {
 
         loadGameInfo() {
 
-            axios .get(`https://localhost:7121/api/Game/${this.$route.params.id}`)
+            axios .get(enviorment.apiUrl + `/Game/${this.$route.params.id}`)
                 .then((response) => {
                     this.game = response.data;
                 })
